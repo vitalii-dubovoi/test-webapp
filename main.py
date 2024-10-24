@@ -3,11 +3,11 @@ import os
 
 app = Flask(__name__)
 
-@app.route('/app', methods=['GET'])
-def get_client_headers():
-    # Get all request headers from the client
-    headers = {key: value for key, value in request.headers.items()}
-    return jsonify(headers)
+@app.route('/environment', methods=['GET'])
+def get_environment_variables():
+    # Convert environment variables to a dictionary and return as JSON
+    env_variables = dict(os.environ)
+    return jsonify(env_variables)
 
 @app.route('/health', methods=['GET'])
 def health_check():
