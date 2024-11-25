@@ -8,7 +8,8 @@ on:
 
 env:
   REGISTRY: 'ghcr.io/${{github.repository_owner}}'
-  IMAGE_NAME: 'hello_client'
+  IMAGE_NAME: 'test-webapp'
+  
 jobs:
  ci:
    name: Build and push
