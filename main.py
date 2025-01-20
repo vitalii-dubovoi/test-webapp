@@ -8,6 +8,14 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
+@app.route('/', methods=['GET'])
+def greetings():
+    ip_address = request.headers.get('X-Forwarded-For', request.remote_addr)
+    message = f"Hi there, are you coming from {ip_address}?"
+    logger.info(f"Greeting endpoint called. IP Address: {ip_address}")
+    return message
+    
+
 @app.route('/environment', methods=['GET'])
 def get_environment_variables():
     env_variables = dict(os.environ)
